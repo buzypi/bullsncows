@@ -1,0 +1,108 @@
+<html>
+<head>
+<title>BullsNCows - Buzypi</title>
+
+<link href='http://fonts.googleapis.com/css?family=Terminal+Dosis:200,500' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="master.css">
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+<script src="http://underscorejs.org/underscore-min.js"></script>
+<script src="bullsncows.js"></script>
+</head>
+<body>
+
+<!-- ##### Main Copy ##### -->
+<div id="header">
+    <div id="logo" class=""><a href="http://jnaapti.com/" style="text-decoration:none">jnaapti</a></div>
+</div>
+
+<div id="main-copy" class="container">
+    <ul id="tabs" class="nav nav-tabs">
+        <li class="active"><a href="#play">Play</a></li>
+        <li><a href="#help">Help</a></li>
+    </ul>
+    <div class="tab-content">
+        <div ng-app="bullsncows" ng-controller="BCController as bc" data-toggle="tab" class="tab-pane active" id="play">
+            <h4 ng-if="bc.tries.length === 0">Enter a number between 0 to 9999 to get started</h4>
+            <table id="tableId" border="0" width="100%" class="table table-bordered table-striped">
+            <thead ng-if="bc.tries.length > 0">
+                <tr>
+                    <th>You entered</th>
+                    <th>Bulls</th>
+                    <th>Cows</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="t in bc.tries">
+                    <td>{{t.num}}</td>
+                    <td>{{t.bulls}}</td>
+                    <td>{{t.cows}}</td>
+                </tr>
+            </tbody>
+            </table>
+            <div class="row">
+                <div class="col-sm-5"><input autofocus ng-keypress="bc.testKey($event)" ng-model="bc.enteredNumber" type="number" min="0" max="9999" class="form-control" id="enteredNumber" placeholder="Enter number" /></div>
+                <div class="col-sm-1"><button class="btn btn-primary" ng-click="bc.verify()">Check</button></div>
+                <div class="col-sm-1"><button class="btn btn-danger" ng-click="bc.giveUp()">Give up :(</button></div>
+                <div class="col-sm-2">Total tries: <strong>{{bc.tries.length}}</strong></div>
+            </div>
+        </div> <!-- End of #play -->
+        <div data-toggle="tab" class="tab-pane" id="help">
+            <div class="row">
+                <div class="col-sm-4">
+                <ul>
+                    <li>The computer selects a random number between 1 and 9999. Your
+                    aim is to guess that number in the least number of steps.</li>
+                    <li>Enter a number between and including 1 and 9999.</li>
+
+                    <li>The computer verifies the number and displays the result in
+                    terms of bulls and cows.</li>
+                    <li>A <b>Bull </b>indicates that the digit in your number and the
+                    computer's number are in the correct position.</li>
+                    <li>A <b>Cow </b>indicates that the digit is present in the
+                    number, but is not in the right position.</li>
+                </ul>
+                </div>
+                <div class="col-sm-4">
+                <b>Examples:</b><br>
+
+                Computer's number is 2347.<br>
+                You enter 1267.<br>
+                The digits 2 and 7 are present in the both the numbers. 7 is in
+                the exact position. So, it is a bull. 2 is not in the same
+                position... so it is a cow.<br>
+                <br>
+                Computer's number is 5368.<br>
+                You enter 2358.<br>
+
+                3, 8 are in the same position - 2 bulls.<br>
+                5 is in a different position - 1 cow.<br>
+                <br>
+                Computer's number is 2268.<br>
+                You enter 1328.<br>
+                8 is in the same position - 1 bull.<br>
+
+                2 is in a different position - 1 cow.<br>
+                <br>
+                You enter 2328.<br>
+                2 (1st position) and 8 - 2 bulls.<br>
+                2 (3rd position) - 1 cow.<br>
+                <br>
+                Computer's number - 0023.<br>
+
+                You enter 123.<br>
+                3 bulls and 0 cows.<br>
+                <br>
+                You enter 230.<br>
+                1 bull and 3 cows.<br>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="footer">brought to you by - (c) <a href="http://buzypi.in/">buzypi.in</a></div>
+
+</body>
+</html>

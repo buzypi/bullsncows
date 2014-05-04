@@ -1,0 +1,34 @@
+#header {
+    background-color: #3276B1;
+    height: 45px;
+}
+#main-copy, #help {
+    padding: 20px;
+}
+#logo {
+    font-family: "Terminal Dosis";
+    font-size: 30px;
+    height: 45px;
+    letter-spacing: 2px;
+    line-height: 40px;
+    margin: 0 auto;
+    padding-left: 10px;
+    text-shadow: -1px 1px 1px #001421;
+}
+#footer {
+    background-color: #3276B1;
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    height: 15px;
+    font-size: 10px;
+    color: white;
+    width: 100%;
+}
+#logo a {
+    color: #EDF1F2;
+}
+
+#footer a {
+    color: white;
+}
